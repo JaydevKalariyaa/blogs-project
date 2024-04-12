@@ -1,0 +1,32 @@
+//mongodb+srv://jaydevk:2WNPgr9tn2eFvLHZ@cluster0.wpojytm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+// pages/api/getAllData.js
+import { MongoClient } from "mongodb";
+export const client = new MongoClient(
+  "mongodb+srv://jaydevkalariya27:kqd76nvhhrgi0rsh@blogs.mzb16bj.mongodb.net/?retryWrites=true&w=majority&appName=blogs"
+);
+const database = client.db("blogDb");
+export const collection = database.collection("blogs");
+// export default async function handler(req, res) {
+//   if (req.method === "GET") {
+//     const client = new MongoClient(process.env.MONGODB_URI, {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true,
+//     });
+
+//     try {
+//       await client.connect();
+//       const database = client.db("user_data_db"); // Choose a name for your database
+//       const collection = database.collection("user_data_collection"); // Choose a name for your collection
+//       const allData = await collection.find({}).toArray();
+
+//       res.status(200).json(allData);
+//     } catch (error) {
+//       res.status(500).json({ message: "Something went wrong!" });
+//     } finally {
+//       await client.close();
+//     }
+//   } else {
+//     res.status(405).json({ message: "Method not allowed!" });
+//   }
+// }
