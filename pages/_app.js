@@ -7,6 +7,7 @@ import Spinner from "../components/ui/spinner";
 import { useEffect, useState } from "react";
 import Script from "next/script";
 
+import { SessionProvider } from "next-auth/react";
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -29,14 +30,16 @@ function MyApp({ Component, pageProps }) {
     };
   }, []);
   return (
-    <Layout>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-      {loading && <Spinner />}
-      <Component {...pageProps} />
-      <Script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></Script>
-    </Layout>
+    <SessionProvider session={pageProps.session}>
+      <Layout>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+        </Head>
+        {loading && <Spinner />}
+        <Component {...pageProps} />
+        <Script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></Script>
+      </Layout>
+    </SessionProvider>
   );
 }
 

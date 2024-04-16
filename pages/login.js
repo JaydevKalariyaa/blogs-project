@@ -1,20 +1,21 @@
-import ContactForm from "../components/contact/contact-form";
+import React from "react";
+import Login from "../components/authentication/login";
 
 import { getSession } from "next-auth/react";
 
-export default function ContactPage() {
+export default function Loginn() {
   return (
     <>
-      <ContactForm />
+      <Login />
     </>
   );
 }
 export async function getServerSideProps(context) {
   const session = await getSession({ req: context.req });
-  if (!session) {
+  if (session) {
     return {
       redirect: {
-        destination: "/login",
+        destination: "/",
         permanent: false,
       },
     };

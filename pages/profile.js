@@ -1,11 +1,14 @@
-import ContactForm from "../components/contact/contact-form";
+import React from "react";
 
 import { getSession } from "next-auth/react";
-
-export default function ContactPage() {
+import ChangePassword from "../components/authentication/ChangePassword";
+export default function Profile({ session }) {
   return (
     <>
-      <ContactForm />
+      <h1 style={{ color: "white", textAlign: "center" }}>
+        {session.user.email}
+      </h1>
+      <ChangePassword />
     </>
   );
 }
