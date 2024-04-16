@@ -3,10 +3,20 @@ import Link from "next/link";
 import Logo from "./logo";
 import classes from "./main-navigation.module.css";
 import { useSession, signOut } from "next-auth/react";
+import Notification from "../ui/notification";
+import { useState } from "react";
+
 function MainNavigation() {
   const { data: session } = useSession();
-  const handleLogout = () => {
-    signOut();
+  const [notification, setNotification] = useState();
+
+  const handleLogout = async () => {
+    setNotification({
+      status: "success",
+      title: "Success!",
+      message: "Logout successfully!",
+    });
+    await signOut();
   };
   return (
     <header className={classes.header}>
@@ -42,6 +52,13 @@ function MainNavigation() {
           )}
         </ul>
       </nav>
+      {notification && (
+        <Notification
+          status={notification.status}
+          title={notification.title}
+          message={notification.message}
+        />
+      )}
     </header>
   );
 }
