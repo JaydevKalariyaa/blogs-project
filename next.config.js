@@ -13,6 +13,7 @@ module.exports = (phase) => {
       env: {
         DB_L: "mongodb+srv://jaydevkalariya27:jkjk@blogs.mzb16bj.mongodb.net/?retryWrites=true&w=majority&appName=blogs",
         DB_NAME: "blogDb",
+        NEXT_PUBLIC_SECRET: "jkjkjkjk",
       },
     };
   }
